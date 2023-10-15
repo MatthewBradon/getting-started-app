@@ -47,6 +47,7 @@ function TodoListCard() {
         [items],
     );
 
+
     if (items === null) return 'Loading...';
 
     return (
@@ -61,6 +62,7 @@ function TodoListCard() {
                     key={item.id}
                     onItemUpdate={onItemUpdate}
                     onItemRemoval={onItemRemoval}
+
                 />
             ))}
         </React.Fragment>
@@ -136,8 +138,17 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
         );
     };
 
+    const colors = ['#F3E9E1', '#E8F3E9', '#E6E9EF', '#F3E5E9', '#F0E9F4', '#EFE6E6', '#F4F1E6'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+
+    const containerStyles = {
+    	backgroundColor: colors[randomIndex],
+    };
+
+
+
     return (
-        <Container fluid className={`item ${item.completed && 'completed'}`}>
+        <Container fluid className={`item ${item.completed && 'completed'}`} style={containerStyles}>
             <Row>
                 <Col xs={1} className="text-center">
                     <Button
